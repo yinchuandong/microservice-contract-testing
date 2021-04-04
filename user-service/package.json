@@ -6,7 +6,7 @@
     "start": "tsc-watch -p tsconfig.json --onSuccess \"nodemon dist/server.js\"",
     "test": "env-cmd -f .env.test jest --coverage --detectOpenHandles",
     "contract:verify": "CI=true yarn test",
-    "contract:can-i-deploy": "pact-broker can-i-deploy --pacticipant 'UserService' --latest"
+    "contract:can-i-deploy": "env-cmd -f .env.test pact-broker can-i-deploy --pacticipant 'UserService' --latest"
   },
   "keywords": [
     "graphql",
