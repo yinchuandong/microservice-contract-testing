@@ -1,0 +1,39 @@
+{
+  "name": "graphql-pact-example",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "tsc-watch -p tsconfig.json --onSuccess \"nodemon dist/server.js\"",
+    "test": "env-cmd -f .env.test jest --coverage --detectOpenHandles",
+    "contract:verify": "CI=true yarn test",
+    "contract:can-i-deploy": "pact-broker can-i-deploy --pacticipant 'UserService' --latest"
+  },
+  "keywords": [
+    "graphql",
+    "pact",
+    "contract-testing"
+  ],
+  "author": "Johnny Yin",
+  "license": "MIT",
+  
+  "dependencies": {
+    "express": "^4.17.0",
+    "express-graphql": "0.12.0",
+    "graphql": "^15.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "@pact-foundation/absolute-version": "0.0.2",
+    "@pact-foundation/pact": "^9.15.0",
+    "@types/node": "^14.0.0",
+    "rimraf": "^2.6.2",
+    "ts-node": "^9.0.0",
+    "typescript": "^3.8.2",
+    "source-map-support": "^0.5.19",
+    "jest": "26.6.3",
+    "ts-jest": "26.5.2",
+    "env-cmd": "^10.1.0",
+    "tsc-watch": "^4.2.3",
+    "prettier": "^1.19.1"
+  }
+}
