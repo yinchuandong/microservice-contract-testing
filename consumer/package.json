@@ -1,8 +1,7 @@
 {
-  "name": "graphql-pact-example",
+  "name": "web-consumer",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "tsc-watch -p tsconfig.json --onSuccess \"nodemon dist/server.js\"",
     "clean": "rimraf pacts",
@@ -15,7 +14,7 @@
     "pact",
     "contract-testing"
   ],
-  "author": "Matt Fellows <matt.fellows@onegeek.com.au>",
+  "author": "Johnny Yin",
   "license": "MIT",
   
   "dependencies": {
