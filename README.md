@@ -55,16 +55,16 @@ yarn install
 
 ### Provider commands
 
-| cmd                          | description                                                                                                    |
-| ---------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `yarn test`                  | Run unittest with the latest contract from broker locally                                                      |
-| `yarn contract:verify`       | Verify if current changes will affect consumers' contracts that depends on this service (should do this in CI) |
-| `yarn contract:can-i-deploy` | Check if current changes can be deployed using the latest contract from broker                                 |
+| <div style="width:300px">cmd</div> | description                                                                                                    |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `yarn test`                        | Run unittest with the latest contract from broker locally                                                      |
+| `yarn contract:verify`             | Verify if current changes will affect consumers' contracts that depends on this service (should do this in CI) |
+| `yarn contract:can-i-deploy`       | Check if current changes can be deployed using the latest contract from broker                                 |
 
 ### Consumer commands
 
-| cmd                          | description                                                                             |
-| ---------------------------- | --------------------------------------------------------------------------------------- |
-| `yarn test`                  | Run unittest and generate contract locally                                              |
-| `yarn contract:publish`      | Publish the generated contract to broker (should only do it in CI)                      |
-| `yarn contract:can-i-deploy` | Check if current consumer changes can be deployed using the latest contract from broker |
+| <div style="width:300px">cmd</div> | description                                                                             |
+| ---------------------------------- | --------------------------------------------------------------------------------------- |
+| `yarn test`                        | Run unittest and generate contract locally                                              |
+| `yarn contract:publish`            | Publish the generated contract to broker (should only do it in CI)                      |
+| `yarn contract:can-i-deploy`       | Check if current consumer changes can be deployed using the latest contract from broker |
