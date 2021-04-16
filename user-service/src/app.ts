@@ -16,6 +16,15 @@ const root = {
 
 export const app = express()
 
+app.get("/rest/users", (req, res) => {
+  res.json([
+    {
+      name: "Molly",
+      age: 24
+    }
+  ])
+})
+
 app.use(
   "/graphql",
   graphqlHTTP({

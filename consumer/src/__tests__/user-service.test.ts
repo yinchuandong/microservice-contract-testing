@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-expression object-literal-sort-keys max-classes-per-file no-empty */
 import * as path from "path"
-import { queryUser } from "../user-service"
-import { Pact, GraphQLInteraction, Matchers } from "@pact-foundation/pact"
+import { getUsers, queryUser } from "../user-service"
+import { Pact, GraphQLInteraction, Interaction, Matchers } from "@pact-foundation/pact"
 const { like } = Matchers
 
 describe("UserService", () => {
@@ -23,7 +23,7 @@ describe("UserService", () => {
     done()
   })
 
-  describe("query User", () => {
+  describe("GraphQL/queryUser", () => {
     beforeAll(async (done) => {
       /**
        * NOTE: I feel this query should be generated automatically from an Swagger openapi file or some other schema files with example data.
@@ -74,6 +74,47 @@ describe("UserService", () => {
         name: "Johnny",
         age: 20
       })
+    })
+  })
+
+  describe("rest/getUsers", () => {
+    beforeAll(async (done) => {
+      const getUsersInteracton = new Interaction()
+        .uponReceiving("REST getUser")
+        .withRequest({
+          method: "GET",
+          path: "/rest/users"
+        })
+        .willRespondWith({
+          status: 200,
+          headers: {
+            "Content-Type": "application/json; charset=utf-8"
+          },
+          body: [
+            {
+              name: like("Molly"),
+              age: like(24)
+            }
+          ]
+        })
+
+      await provider.addInteraction(getUsersInteracton)
+      done()
+    })
+
+    afterEach(async (done) => {
+      await provider.verify()
+      done()
+    })
+
+    it("should return the correct get users response", async () => {
+      const result = await getUsers()
+      return expect(result.data).toEqual([
+        {
+          name: "Molly",
+          age: 24
+        }
+      ])
     })
   })
 })
